@@ -72,6 +72,98 @@ All operations happen in the workspace, while the original data remains untouche
 - Introducing a staging workflow for non-versioned files
 
 ---
+---
+
+## CLI Commands (Planned)
+
+OverlayVault provides a simple CLI inspired by Git.
+
+### ov init
+
+Initializes an OverlayVault repository in the current directory.
+
+- Creates `.ovconfig`
+- Prepares internal directories (`.ov/`, trash, etc.)
+- Defines repository and workspace structure
+
+---
+
+### ov mount
+
+Mounts the OverlayFS workspace.
+
+- Combines repository (lower) and staging (upper)
+- Creates the working directory where all operations occur
+
+---
+
+### ov umount
+
+Unmounts the workspace.
+
+- Safely detaches the overlay filesystem
+
+---
+
+### ov status
+
+Displays the current state of the workspace.
+
+Shows:
+
+- Added files
+- Modified files
+- Deleted files (overlay-level)
+- Files moved to trash
+
+---
+
+### ov del <file>
+
+Safely removes a file from the workspace.
+
+- Moves the file to the local trash
+- Avoids OverlayFS whiteout where possible
+- Allows recovery before commit
+
+---
+
+### ov restore <file>
+
+Restores a file from the trash.
+
+- Returns the file to its original path
+- Works only before changes are pushed
+
+---
+
+### ov push
+
+Applies all staged changes to the repository.
+
+- Syncs staging layer into the original data
+- Makes changes permanent
+
+---
+
+### ov reset
+
+Discards all staged changes.
+
+- Clears the staging layer
+- Restores workspace to match repository
+
+---
+
+## Command Philosophy
+
+OverlayVault follows a simple model:
+
+- Work safely in an isolated workspace
+- Review changes using `ov status`
+- Apply changes explicitly using `ov push`
+
+Destructive operations are never immediate and always require explicit confirmation.
 
 ## Status
 
