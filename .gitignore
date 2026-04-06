@@ -1,0 +1,14 @@
+# Runtime data
+.ov/
+workspace/
+repo/
+
+# Logs
+*.log
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.swo
