@@ -72,7 +72,6 @@ All operations happen in the workspace, while the original data remains untouche
 - Introducing a staging workflow for non-versioned files
 
 ---
----
 
 ## CLI Commands (Planned)
 
@@ -164,6 +163,18 @@ OverlayVault follows a simple model:
 - Apply changes explicitly using `ov push`
 
 Destructive operations are never immediate and always require explicit confirmation.
+
+---
+
+## Documentation
+
+Detailed technical documentation is available in the `docs/` directory:
+
+- [Architecture](docs/architecture.md)
+- [OverlayFS Notes](docs/overlayfs-notes.md)
+- [Repository Layout and Configuration](docs/repository-layout.md)
+
+These documents describe the internal design, filesystem behavior and repository structure of OverlayVault.
 
 ## Status
 
